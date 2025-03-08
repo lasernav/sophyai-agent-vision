@@ -38,6 +38,9 @@ docker build -t sophyai-agent:qwen2.5vl-7b -f docker/Dockerfile .
 # Avvia il server Gradio
 docker run --gpus all -it --rm  -p 7860:7860  -v png:/app/png -v risultati:/app/risultati sophyai-agent:qwen2.5vl-7b server
 
+# Avvia il server Gradio con la cache del modello in locale non all'interno del docker
+docker run --gpus all -it --rm  -v model:/data -p 7860:7860  -v png:/app/png -v risultati:/app/risultati sophyai-agent:qwen2.5vl-7b server
+
 # Oppure avvia l'elaborazione batch delle immagini
 docker run --gpus all -it --rm \
   -v $(pwd)/png:/app/png \

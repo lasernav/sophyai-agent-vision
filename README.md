@@ -71,12 +71,35 @@ Il progetto è organizzato in diverse directory e file, alcuni dei quali sono ig
 
 ## Utilizzo
 
-Descrivere come utilizzare l'applicazione, includendo esempi di comandi o codice.
 
-## Contributi
+`back-end.py` è un'applicazione server che utilizza la libreria Transformers per eseguire inferenze su modelli di linguaggio. Ecco una panoramica delle sue funzionalità principali:
 
-Indicare come gli altri possono contribuire al progetto.
+- **Impostazione delle variabili d'ambiente**: Configura variabili d'ambiente critiche per ottimizzare le prestazioni e gestire le risorse, come la disabilitazione di moduli problematici e l'uso di offload su disco.
+- **Logging avanzato**: Utilizza il modulo `logging` per fornire informazioni dettagliate sullo stato del sistema e delle risorse.
+- **Monitoraggio delle risorse**: Implementa funzioni per monitorare l'utilizzo della memoria RAM, GPU e spazio su disco, loggando periodicamente le statistiche.
+- **Ottimizzazioni CUDA**: Applica ottimizzazioni specifiche per CUDA per migliorare le prestazioni durante l'inferenza.
+- **Threading e parallelismo**: Utilizza thread per monitorare le risorse e gestire richieste concorrenti.
+
+### scan_analyze_png.py
+
+`scan_analyze_png.py` è un'applicazione che analizza immagini in una directory specifica e utilizza un'API Gradio per estrarre dati testuali e numerici. Ecco le sue funzionalità principali:
+
+- **Scansione della directory**: Cerca immagini nella directory `png` e le prepara per l'analisi.
+- **Interazione con API Gradio**: Invia le immagini a un server Gradio per l'analisi e riceve risposte in formato JSON.
+- **Gestione delle risposte**: Elabora le risposte ricevute dall'API, assicurandosi che siano in formato JSON valido.
+- **Salvataggio dei risultati**: Salva le descrizioni delle immagini in file JSON nella directory `risultati`.
+- **Debug e logging**: Fornisce messaggi di debug dettagliati per monitorare il flusso di lavoro e risolvere eventuali problemi.
 
 ## Licenza
 
-Specifica la licenza sotto cui il progetto è distribuito. 
+Questo progetto è distribuito sotto la [Nome della Licenza] (inserisci il link alla licenza se disponibile).
+
+## Autore
+
+- Nome dell'Autore: Roberto Navoni
+- Email: r.navoni@radionav.it
+
+## Azienda
+
+- Nome dell'Azienda: Laser Navigation 
+- Sito Web: http://www.lasernavigation.it 
