@@ -1,0 +1,60 @@
+# File di byte-compilati Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribuzione / packaging
+dist/
+build/
+*.egg-info/
+
+# Ambiente virtuale
+venv/
+env/
+ENV/
+phi4_env/
+png/
+
+# File di cache
+.cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# File di log
+*.log
+
+# File di ambiente locale
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# File IDE e editor
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# File specifici di sistema operativo
+Thumbs.db
+
+# File di dati
+*.csv
+*.dat
+*.db
+*.sqlite
+
+# Directory di output
+output/
+downloads/
+uploads/
+
+# Notebook Jupyter
+.ipynb_checkpoints
+
+# File temporanei
+tmp/
+temp/

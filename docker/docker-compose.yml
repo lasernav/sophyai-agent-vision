@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  sophyai-server:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: sophyai-agent:qwen2.5vl-7b
+    container_name: sophyai-agent-server
+    ports:
+      - "7860:7860"
+    volumes:
+      - ../png:/app/png
+      - ../risultati:/app/risultati
+    environment:
+      - HF_HUB_ENABLE_HF_TRANSFER=1
+      - ACCELERATE_USE_DISK_OFFLOAD=1
+      - OMP_NUM_THREADS=4
+      - PYTHONUNBUFFERED=1
+    command: server
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  sophyai-process:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: sophyai-agent:qwen2.5vl-7b
+    container_name: sophyai-agent-process
+    volumes:
+      - ../png:/app/png
+      - ../risultati:/app/risultati
+    environment:
+      - HF_HUB_ENABLE_HF_TRANSFER=1
+      - ACCELERATE_USE_DISK_OFFLOAD=1
+      - OMP_NUM_THREADS=4
+      - PYTHONUNBUFFERED=1
+    command: process
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu] 
