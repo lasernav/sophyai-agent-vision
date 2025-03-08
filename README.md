@@ -1,105 +1,82 @@
----
-title: Qwen2.5 VL 7B
-emoji: 🔥
-colorFrom: pink
-colorTo: indigo
-sdk: gradio
-sdk_version: 5.15.0
-app_file: app.py
-pinned: true
-license: creativeml-openrail-m
-short_description: Qwen2.5-VL-7B-Instruct
----
+# Nome del Progetto
 
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
-
-# SophyAI-Agent-Qwen2.5VL-7B
-
-Agente AI basato su Qwen2.5-VL-7B per l'estrazione di dati testuali e numerici dalle immagini, ottimizzato per l'inferenza rapida.
-
-## Funzionalità
-
-- **Estrazione Dati**: Estrae dati testuali e numerici da immagini
-- **Analisi Veloce**: Ottimizzata per velocità di inferenza (fino a 5-7 token/s)
-- **Modalità Duale**: Supporta interfaccia web interattiva o elaborazione batch di immagini
-- **Dockerizzata**: Facilmente distribuibile tramite container Docker su qualsiasi piattaforma
-
-## Utilizzo Standard
-
-### Esecuzione locale
-
-```bash
-# Rendi eseguibile lo script
-chmod +x run_local.sh
-
-# Avvia il server Gradio
-./run_local.sh server
-
-# Oppure elabora le immagini in batch
-./run_local.sh process
-```
-
-### Esecuzione con Docker
-
-Per utilizzare l'applicazione con Docker, vedere la [documentazione Docker](docker/README.md) nella directory `docker/`.
+Breve descrizione del progetto, cosa fa e quali problemi risolve.
 
 ## Struttura del Progetto
 
-```
-SophyAI-Agent-Qwen2.5VL-7B/
-├── app.py                   # Server Gradio con interfaccia web
-├── scan_analyze_png.py      # Script per analisi batch delle immagini
-├── run_local.sh             # Script per esecuzione locale
-├── requirements.txt         # Dipendenze Python
-├── png/                     # Directory per le immagini da analizzare
-├── risultati/               # Directory per i risultati dell'analisi
-└── docker/                  # Directory con configurazione Docker
-    ├── Dockerfile           # Definizione dell'immagine Docker
-    ├── docker-compose.yml   # Configurazione dei servizi Docker
-    ├── entrypoint.sh        # Script di avvio per il container
-    └── README.md            # Documentazione specifica per Docker
-```
+Il progetto è organizzato in diverse directory e file, alcuni dei quali sono ignorati dal controllo di versione per mantenere il repository pulito e gestibile. Di seguito è riportata una descrizione delle principali sezioni del file `.gitignore`:
 
-## Requisiti
+### File di byte-compilati Python
+- `__pycache__/`: Directory che contiene file di cache generati da Python.
+- `*.py[cod]`: File di bytecode Python.
+- `*$py.class`: File di classe Python.
 
-### Per utilizzo locale:
-- Python 3.10+
-- NVIDIA GPU con almeno 12GB di VRAM (consigliati 24GB+)
-- CUDA 11.8+
+### Distribuzione / Packaging
+- `dist/`, `build/`, `*.egg-info/`: Directory e file generati durante il processo di packaging e distribuzione.
 
-### Per utilizzo Docker:
-- Docker
-- NVIDIA GPU con almeno 12GB di VRAM (consigliati 24GB+)
-- NVIDIA Docker Runtime (nvidia-container-toolkit)
+### Ambiente Virtuale
+- `venv/`, `env/`, `ENV/`, `phi4_env/`: Directory degli ambienti virtuali Python.
+- `png/`: (Se applicabile, descrivere l'uso di questa directory).
 
-## Installazione
+### File di Cache
+- `.cache/`, `.pytest_cache/`, `.coverage`, `htmlcov/`: File e directory di cache generati durante l'esecuzione dei test e la copertura del codice.
 
-```bash
-# Clona il repository (se applicabile)
-# git clone https://github.com/tuouser/SophyAI-Agent-Qwen2.5VL-7B.git
-# cd SophyAI-Agent-Qwen2.5VL-7B
+### File di Log
+- `*.log`: File di log generati dall'applicazione.
 
-# Crea ambiente virtuale e installa dipendenze
-python -m venv venv
-source venv/bin/activate  # Su Windows: venv\Scripts\activate
-pip install -r requirements.txt
-```
+### File di Ambiente Locale
+- `.env`, `.env.local`, ecc.: File di configurazione dell'ambiente locale.
 
-## Note su performance e ottimizzazioni
+### File IDE e Editor
+- `.idea/`, `.vscode/`, `*.swp`, `*.swo`, `.DS_Store`: File e directory specifici dell'IDE o dell'editor.
 
-L'applicazione è stata ottimizzata per:
+### File Specifici di Sistema Operativo
+- `Thumbs.db`: File generati dal sistema operativo.
 
-- Velocità di generazione dei token (circa 5-7 token/s su GPU adeguata)
-- Efficienza nell'elaborazione delle immagini
-- Riduzione della risoluzione per bilanciare qualità e performance
+### File di Dati
+- `*.csv`, `*.dat`, `*.db`, `*.sqlite`: File di dati utilizzati dall'applicazione.
 
-## Troubleshooting
+### Directory di Output
+- `output/`, `downloads/`, `uploads/`: Directory per file di output e trasferimenti.
 
-- **Errore "CUDA initialization failed"**: Verifica che i driver NVIDIA siano installati correttamente.
-- **Errore "OOM" (Out Of Memory)**: Prova con immagini più piccole o riduci la risoluzione di input modificando il codice.
-- **Generazione lenta**: Verifica che altre applicazioni non stiano utilizzando la GPU.
+### Notebook Jupyter
+- `.ipynb_checkpoints`: Directory di checkpoint per i notebook Jupyter.
 
-## License
-Questo progetto utilizza il modello Qwen2.5-VL-7B-Instruct soggetto a termini di licenza CreativeML OpenRAIL-M.
+### File Temporanei
+- `tmp/`, `temp/`: Directory per file temporanei.
 
-Da condividere in github con stecon2
+## Istruzioni per l'Installazione
+
+1. Clonare il repository:
+   ```bash
+   git clone <url-del-repository>
+   ```
+2. Creare un ambiente virtuale:
+   ```bash
+   python -m venv venv
+   ```
+3. Attivare l'ambiente virtuale:
+   - Su Windows:
+     ```bash
+     .\\venv\\Scripts\\activate
+     ```
+   - Su macOS e Linux:
+     ```bash
+     source venv/bin/activate
+     ```
+4. Installare le dipendenze:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Utilizzo
+
+Descrivere come utilizzare l'applicazione, includendo esempi di comandi o codice.
+
+## Contributi
+
+Indicare come gli altri possono contribuire al progetto.
+
+## Licenza
+
+Specifica la licenza sotto cui il progetto è distribuito. 
